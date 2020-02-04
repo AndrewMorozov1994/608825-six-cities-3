@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Морозов](https://up.htmlacademy.ru/react/3/user/608825).
-* Наставник: `Неизвестно`.
+* Наставник: [Вадим Шевяков](https://up.htmlacademy.ru/react/3/user/574589).
 
 ---
 
