@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App/app.jsx";
+import App from "./components/app/app.jsx";
 
 const offersCount = 312;
 
