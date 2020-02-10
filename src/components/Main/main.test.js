@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './main.jsx';
+import Main from './main.jsx';
 
 const offersCount = 312;
 
@@ -48,7 +48,7 @@ const apartments = [
 ];
 
 it(`<Main /> should be render correctly`, () => {
-  const main = renderer.create(<App
+  const main = renderer.create(<Main
     offersCount = {offersCount}
     apartments = {apartments}
   />).toJSON();
