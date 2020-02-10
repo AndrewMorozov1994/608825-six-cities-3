@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/app/app.jsx";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import App from './app.jsx';
 
 const offersCount = 312;
 
@@ -47,13 +47,10 @@ const apartments = [
   },
 ];
 
-const apartmentTitlesClickHandler = () => {};
-
-ReactDOM.render(
-    <App
-      offersCount = {offersCount}
-      apartments = {apartments}
-      apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
-    />,
-    document.getElementById(`root`)
-);
+it(`<App /> should be render correctly`, () => {
+  const app = renderer.create(<App
+    offersCount = {offersCount}
+    apartments = {apartments}
+  />).toJSON();
+  expect(app).toMatchSnapshot();
+});

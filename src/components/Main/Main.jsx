@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {offersCount, apartments} = props;
+  const {offersCount, apartments, apartmentTitlesClickHandler} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -127,7 +127,7 @@ const Main = (props) => {
                         </div>
                       </div>
                       <h2 className="place-card__name">
-                        <a href="#">{apartment.title}</a>
+                        <a href="#" onClick={apartmentTitlesClickHandler}>{apartment.title}</a>
                       </h2>
                       <p className="place-card__type">{apartment.title}</p>
                     </div>
@@ -157,6 +157,7 @@ Main.propTypes = {
         mark: PropTypes.string.isRequired
       })
   ).isRequired,
+  apartmentTitlesClickHandler: PropTypes.func,
 };
 
 export default Main;
