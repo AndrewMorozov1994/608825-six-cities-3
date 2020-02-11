@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 const App = (props) => {
-  const {offersCount, apartments} = props;
+  const {offersCount, apartments, apartmentTitlesClickHandler} = props;
 
   return (
     <Main
       offersCount = {offersCount}
       apartments = {apartments}
+      apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
     />
   );
 };
@@ -25,6 +26,7 @@ App.propTypes = {
         mark: PropTypes.string.isRequired
       })
   ).isRequired,
+  apartmentTitlesClickHandler: PropTypes.func,
 };
 
 export default App;
