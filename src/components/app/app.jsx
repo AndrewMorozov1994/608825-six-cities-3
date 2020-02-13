@@ -3,20 +3,21 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
 const App = (props) => {
-  const {offersCount, apartments, apartmentTitlesClickHandler} = props;
+  const {offersCount, offers, apartmentTitlesClickHandler, onCardMouseOver} = props;
 
   return (
     <Main
       offersCount = {offersCount}
-      apartments = {apartments}
+      offers = {offers}
       apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
+      onCardMouseOver = {onCardMouseOver}
     />
   );
 };
 
 App.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  apartments: PropTypes.arrayOf(
+  offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -27,6 +28,7 @@ App.propTypes = {
       })
   ).isRequired,
   apartmentTitlesClickHandler: PropTypes.func,
+  onCardMouseOver: PropTypes.func,
 };
 
 export default App;

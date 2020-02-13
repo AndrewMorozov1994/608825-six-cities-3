@@ -1,9 +1,6 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Main from './main.jsx';
-
-const offersCount = 312;
+import renderer from 'react-test-renderer';
+import PlaceList from './place-list.jsx';
 
 const offers = [
   {
@@ -48,21 +45,9 @@ const offers = [
   },
 ];
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
-
-it(`apartmentTitles should be pressed`, () => {
-  const apartmentTitlesClickHandler = jest.fn();
-  const main = shallow(
-      <Main
-        offersCount = {offersCount}
-        offers = {offers}
-        apartmentTitlesClickHandler={apartmentTitlesClickHandler}
-      />);
-  const apartmentTitles = main.find(`.place-card__name a`);
-  apartmentTitles.forEach((it) => {
-    it.props().onClick();
-  });
-  expect(apartmentTitlesClickHandler.mock.calls.length).toBe(offers.length);
+it(`<PlaceList /> should be render correctly`, () => {
+  const placeList = renderer.create(<PlaceList
+    offers = {offers}
+  />).toJSON();
+  expect(placeList).toMatchSnapshot();
 });

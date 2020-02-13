@@ -1,11 +1,4 @@
-import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Main from './main.jsx';
-
-const offersCount = 312;
-
-const offers = [
+export default [
   {
     id: 1,
     title: `Beautiful & luxurious apartment at great location`,
@@ -47,22 +40,3 @@ const offers = [
     mark: ``,
   },
 ];
-
-Enzyme.configure({
-  adapter: new Adapter()
-});
-
-it(`apartmentTitles should be pressed`, () => {
-  const apartmentTitlesClickHandler = jest.fn();
-  const main = shallow(
-      <Main
-        offersCount = {offersCount}
-        offers = {offers}
-        apartmentTitlesClickHandler={apartmentTitlesClickHandler}
-      />);
-  const apartmentTitles = main.find(`.place-card__name a`);
-  apartmentTitles.forEach((it) => {
-    it.props().onClick();
-  });
-  expect(apartmentTitlesClickHandler.mock.calls.length).toBe(offers.length);
-});

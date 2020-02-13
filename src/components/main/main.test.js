@@ -4,7 +4,7 @@ import Main from './main.jsx';
 
 const offersCount = 312;
 
-const apartments = [
+const offers = [
   {
     id: 1,
     title: `Beautiful & luxurious apartment at great location`,
@@ -50,7 +50,7 @@ const apartments = [
 it(`<Main /> should be render correctly`, () => {
   const main = renderer.create(<Main
     offersCount = {offersCount}
-    apartments = {apartments}
+    offers = {offers}
   />).toJSON();
   expect(main).toMatchSnapshot();
 });
