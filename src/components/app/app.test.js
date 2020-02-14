@@ -4,7 +4,7 @@ import App from './app.jsx';
 
 const offersCount = 312;
 
-const apartments = [
+const offers = [
   {
     id: 1,
     title: `Beautiful & luxurious apartment at great location`,
@@ -50,7 +50,7 @@ const apartments = [
 it(`<App /> should be render correctly`, () => {
   const app = renderer.create(<App
     offersCount = {offersCount}
-    apartments = {apartments}
+    offers = {offers}
   />).toJSON();
   expect(app).toMatchSnapshot();
 });
