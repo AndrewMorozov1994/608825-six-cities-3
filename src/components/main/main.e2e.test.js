@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Main from './main.jsx';
 
@@ -54,7 +54,7 @@ Enzyme.configure({
 
 it(`apartmentTitles should be pressed`, () => {
   const apartmentTitlesClickHandler = jest.fn();
-  const main = shallow(
+  const main = mount(
       <Main
         offersCount = {offersCount}
         offers = {offers}
