@@ -93,6 +93,7 @@ Array [
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Beautiful & luxurious apartment at great location
         </a>
@@ -189,6 +190,7 @@ Array [
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Wood and stone place
         </a>
@@ -203,7 +205,13 @@ Array [
   <article
     className="cities__place-card place-card"
   >
-    
+    <div
+      className="place-card__mark"
+    >
+      <span>
+        Premium
+      </span>
+    </div>
     <div
       className="cities__image-wrapper place-card__image-wrapper"
     >
@@ -285,6 +293,7 @@ Array [
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Canal View Prinsengracht
         </a>
@@ -387,6 +396,7 @@ Array [
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Nice, cozy, warm big bed apartment
         </a>
@@ -483,6 +493,7 @@ Array [
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Wood and stone place
         </a>
