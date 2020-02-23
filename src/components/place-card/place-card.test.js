@@ -4,12 +4,22 @@ import PlaceCard from './place-card.jsx';
 
 const offers = [
   {
-    id: 1,
+    id: 0,
     title: `Beautiful & luxurious apartment at great location`,
     src: `img/apartment-01.jpg`,
     price: 120,
     type: `Apartment`,
-    mark: `Premium`,
+    isPremium: true,
+    photos: [`img/apartment-01.jpg`, `img/apartment-01.jpg`, `img/apartment-01.jpg`, `img/apartment-01.jpg`, `img/apartment-01.jpg`],
+    description: `Test1`,
+    bedrooms: 2,
+    guests: 2,
+    features: [`Wifi`, `Heating`, `Cable TV`, `Kitchen`],
+    owner: {
+      name: `Name1`,
+      super: true,
+      src: `img/avatar-max.jpg`
+    },
   },
 ];
 

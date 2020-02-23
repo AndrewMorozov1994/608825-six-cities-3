@@ -6,9 +6,9 @@ const PlaceCard = (props) => {
 
   return (
     <article className="cities__place-card place-card" key = {offer.id} onMouseOver = {onCardMouseOver}>
-      {offer.mark ?
+      {offer.isPremium ?
         <div className="place-card__mark">
-          <span>{offer.mark}</span>
+          <span>Premium</span>
         </div>
         : ``
       }
@@ -37,7 +37,7 @@ const PlaceCard = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={apartmentTitlesClickHandler}>{offer.title}</a>
+          <a href="#" onClick={() => apartmentTitlesClickHandler(offer.id)}>{offer.title}</a>
         </h2>
         <p className="place-card__type">{offer.title}</p>
       </div>
@@ -46,14 +46,30 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  offer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    mark: PropTypes.string.isRequired
-  }).isRequired,
+  offer:
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        src: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        type: PropTypes.string.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+        photos: PropTypes.arrayOf(
+            PropTypes.string
+        ).isRequired,
+        description: PropTypes.string.isRequired,
+        bedrooms: PropTypes.number.isRequired,
+        guests: PropTypes.number.isRequired,
+        features: PropTypes.arrayOf(
+            PropTypes.string
+        ).isRequired,
+        owner: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          super: PropTypes.bool.isRequired,
+          src: PropTypes.string.isRequired
+        })
+      })
+  .isRequired,
   apartmentTitlesClickHandler: PropTypes.func,
   onCardMouseOver: PropTypes.func,
 };

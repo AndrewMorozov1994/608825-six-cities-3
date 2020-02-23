@@ -121,7 +121,21 @@ Main.propTypes = {
         src: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         type: PropTypes.string.isRequired,
-        mark: PropTypes.string.isRequired
+        isPremium: PropTypes.bool.isRequired,
+        photos: PropTypes.arrayOf(
+            PropTypes.string
+        ).isRequired,
+        description: PropTypes.string.isRequired,
+        bedrooms: PropTypes.number.isRequired,
+        guests: PropTypes.number.isRequired,
+        features: PropTypes.arrayOf(
+            PropTypes.string
+        ).isRequired,
+        owner: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          super: PropTypes.bool.isRequired,
+          src: PropTypes.string.isRequired
+        })
       })
   ).isRequired,
   apartmentTitlesClickHandler: PropTypes.func,
