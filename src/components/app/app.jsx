@@ -9,7 +9,7 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      activeId: null,
+      activeId: -1,
     };
 
     this._apartmentTitlesClickHandler = this._apartmentTitlesClickHandler.bind(this);
@@ -25,21 +25,21 @@ class App extends PureComponent {
     const {offersCount, offers, onCardMouseOver} = this.props;
     const {activeId} = this.state;
 
-    if (activeId) {
+    if (activeId >= 0) {
       return (
         <Property
-          card={offers[activeId - 1]}/>
-      );
-    } else {
-      return (
-        <Main
-          offersCount = {offersCount}
-          offers = {offers}
-          apartmentTitlesClickHandler = {this._apartmentTitlesClickHandler}
-          onCardMouseOver = {onCardMouseOver}
-        />
+          card={offers[activeId]}/>
       );
     }
+
+    return (
+      <Main
+        offersCount = {offersCount}
+        offers = {offers}
+        apartmentTitlesClickHandler = {this._apartmentTitlesClickHandler}
+        onCardMouseOver = {onCardMouseOver}
+      />
+    );
   }
 
   render() {

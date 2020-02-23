@@ -4,7 +4,7 @@ import PlaceList from './place-list.jsx';
 
 const offers = [
   {
-    id: 1,
+    id: 0,
     title: `Beautiful & luxurious apartment at great location`,
     src: `img/apartment-01.jpg`,
     price: 120,
@@ -22,7 +22,7 @@ const offers = [
     },
   },
   {
-    id: 2,
+    id: 1,
     title: `Wood and stone place`,
     src: `img/room.jpg`,
     price: 80,
@@ -40,7 +40,7 @@ const offers = [
     },
   },
   {
-    id: 3,
+    id: 2,
     title: `Canal View Prinsengracht`,
     src: `img/apartment-02.jpg`,
     price: 132,
@@ -58,7 +58,7 @@ const offers = [
     },
   },
   {
-    id: 4,
+    id: 3,
     title: `Nice, cozy, warm big bed apartment`,
     src: `img/apartment-03.jpg`,
     price: 180,
@@ -76,7 +76,7 @@ const offers = [
     },
   },
   {
-    id: 5,
+    id: 4,
     title: `Wood and stone place`,
     src: `img/room.jpg`,
     price: 80,
