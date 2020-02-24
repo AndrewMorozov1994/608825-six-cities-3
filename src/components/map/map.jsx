@@ -18,31 +18,35 @@ class Map extends React.PureComponent {
 
   componentDidMount() {
     const {offers} = this.props;
-    const map = leaflet.map(this._map.current, {
-      center: CITY,
-      zoom: ZOOM,
-      zoomControl: false,
-      marker: true
-    });
+    const _map = this._map.current;
 
-    map.setView(CITY, ZOOM);
+    if (_map) {
+      const map = leaflet.map(_map, {
+        center: CITY,
+        zoom: ZOOM,
+        zoomControl: false,
+        marker: true
+      });
 
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(map);
+      map.setView(CITY, ZOOM);
 
-    offers.map((offer) => {
       leaflet
-        .marker(offer.coordinates, {ICON})
+        .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+        })
         .addTo(map);
-    });
+
+      offers.map((offer) => {
+        leaflet
+          .marker(offer.coordinates, {ICON})
+          .addTo(map);
+      });
+    }
   }
 
   render() {
     return (
-      <section id="map" ref={this._map} className="cities__map map"/>
+      <section id ="map" ref={this._map} className="cities__map map"/>
     );
   }
 }
