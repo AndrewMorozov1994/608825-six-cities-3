@@ -20,6 +20,7 @@ const offers = [
       super: true,
       src: `img/avatar-max.jpg`
     },
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     id: 1,
@@ -38,6 +39,7 @@ const offers = [
       super: true,
       src: `img/avatar-max.jpg`
     },
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     id: 2,
@@ -56,6 +58,7 @@ const offers = [
       super: true,
       src: `img/avatar-max.jpg`
     },
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     id: 3,
@@ -74,6 +77,7 @@ const offers = [
       super: true,
       src: `img/avatar-max.jpg`
     },
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
   {
     id: 4,
@@ -92,6 +96,7 @@ const offers = [
       super: true,
       src: `img/avatar-max.jpg`
     },
+    coordinates: [52.3909553943508, 4.85309666406198],
   },
 ];
 

@@ -1,9 +1,6 @@
 import React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Main from './main.jsx';
-
-const offersCount = 312;
+import renderer from 'react-test-renderer';
+import Map from './map.jsx';
 
 const offers = [
   {
@@ -103,21 +100,9 @@ const offers = [
   },
 ];
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
-
-it(`apartmentTitles should be pressed`, () => {
-  const apartmentTitlesClickHandler = jest.fn();
-  const main = mount(
-      <Main
-        offersCount = {offersCount}
-        offers = {offers}
-        apartmentTitlesClickHandler={apartmentTitlesClickHandler}
-      />);
-  const apartmentTitles = main.find(`.place-card__name a`);
-  apartmentTitles.forEach((it) => {
-    it.props().onClick();
-  });
-  expect(apartmentTitlesClickHandler.mock.calls.length).toBe(offers.length);
+it(`<Map /> should be render correctly`, () => {
+  const map = renderer.create(<Map
+    offers = {offers}
+  />).toJSON();
+  expect(map).toMatchSnapshot();
 });

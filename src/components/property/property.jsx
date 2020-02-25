@@ -315,7 +315,10 @@ Property.propTypes = {
           name: PropTypes.string.isRequired,
           super: PropTypes.bool.isRequired,
           src: PropTypes.string.isRequired
-        })
+        }),
+        coordinates: PropTypes.arrayOf(
+            PropTypes.number
+        ).isRequired,
       })
   .isRequired,
 };
