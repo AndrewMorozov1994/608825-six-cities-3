@@ -3,49 +3,26 @@ import PropTypes from "prop-types";
 import PlaceCard from "../place-card/place-card.jsx";
 
 const PlaceList = (props) => {
-  const {offers, apartmentTitlesClickHandler, onCardMouseOver} = props;
+  const {offers, apartmentTitlesClickHandler, onCardMouseOver, className} = props;
 
   return (
-    offers.map((offer) => (
-      <PlaceCard
-        offer = {offer}
-        key = {offer.id}
-        apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
-        onCardMouseOver = {onCardMouseOver}
-      />))
+    <div className={`${className} places__list`}>
+      {offers.map((offer) => (
+        <PlaceCard
+          offer = {offer}
+          key = {offer.id}
+          apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
+          onCardMouseOver = {onCardMouseOver}
+        />))}
+    </div>
   );
 };
 
 PlaceList.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        src: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        photos: PropTypes.arrayOf(
-            PropTypes.string
-        ).isRequired,
-        description: PropTypes.string.isRequired,
-        bedrooms: PropTypes.number.isRequired,
-        guests: PropTypes.number.isRequired,
-        features: PropTypes.arrayOf(
-            PropTypes.string
-        ).isRequired,
-        owner: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          super: PropTypes.bool.isRequired,
-          src: PropTypes.string.isRequired
-        }),
-        coordinates: PropTypes.arrayOf(
-            PropTypes.number
-        ).isRequired,
-      })
-  ).isRequired,
+  offers: PropTypes.array.isRequired,
   apartmentTitlesClickHandler: PropTypes.func,
   onCardMouseOver: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default PlaceList;

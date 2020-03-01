@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PlaceList /> should be render correctly 1`] = `
-Array [
+<div
+  className="undefined places__list"
+>
   <article
     className="cities__place-card place-card"
   >
@@ -104,7 +106,7 @@ Array [
         Beautiful & luxurious apartment at great location
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -201,7 +203,7 @@ Array [
         Wood and stone place
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -304,7 +306,7 @@ Array [
         Canal View Prinsengracht
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -407,7 +409,7 @@ Array [
         Nice, cozy, warm big bed apartment
       </p>
     </div>
-  </article>,
+  </article>
   <article
     className="cities__place-card place-card"
   >
@@ -504,6 +506,6 @@ Array [
         Wood and stone place
       </p>
     </div>
-  </article>,
-]
+  </article>
+</div>
 `;

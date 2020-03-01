@@ -46,33 +46,7 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  offer:
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        src: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        photos: PropTypes.arrayOf(
-            PropTypes.string
-        ).isRequired,
-        description: PropTypes.string.isRequired,
-        bedrooms: PropTypes.number.isRequired,
-        guests: PropTypes.number.isRequired,
-        features: PropTypes.arrayOf(
-            PropTypes.string
-        ).isRequired,
-        owner: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          super: PropTypes.bool.isRequired,
-          src: PropTypes.string.isRequired
-        }),
-        coordinates: PropTypes.arrayOf(
-            PropTypes.number
-        ).isRequired,
-      })
-  .isRequired,
+  offer: PropTypes.object.isRequired,
   apartmentTitlesClickHandler: PropTypes.func,
   onCardMouseOver: PropTypes.func,
 };
