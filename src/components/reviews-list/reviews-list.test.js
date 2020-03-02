@@ -1,6 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Property from './property.jsx';
+import React from "react";
+import renderer from "react-test-renderer";
+import ReviewsList from "./reviews-list.jsx";
 
 const offers = [
   {
@@ -64,9 +64,10 @@ const offers = [
   },
 ];
 
-it(`<Property /> should be render correctly`, () => {
-  const property = renderer.create(<Property
-    card = {offers[0]}
-  />).toJSON();
-  expect(property).toMatchSnapshot();
+it(`<ReviewsList /> should be render correctly`, () => {
+  const reviewsList = renderer.create(<ReviewsList
+    reviews={offers[0].reviews}
+  />)
+  .toJSON();
+  expect(reviewsList).toMatchSnapshot();
 });

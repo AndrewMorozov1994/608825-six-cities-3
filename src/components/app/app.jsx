@@ -88,6 +88,8 @@ App.propTypes = {
         coordinates: PropTypes.arrayOf(
             PropTypes.number
         ).isRequired,
+        reviews: PropTypes.array.isRequired,
+        nearOffers: PropTypes.array.isRequired,
       })
   ).isRequired,
   apartmentTitlesClickHandler: PropTypes.func,

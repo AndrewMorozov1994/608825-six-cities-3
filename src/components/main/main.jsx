@@ -95,16 +95,18 @@ const Main = (props) => {
                   <option className="places__option" value="top-rated">Top rated first</option>
                 </select> */}
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <PlaceList
-                  offers = {offers}
-                  apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
-                  onCardMouseOver = {onCardMouseOver}
-                />
-              </div>
+              <PlaceList
+                offers = {offers}
+                apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
+                onCardMouseOver = {onCardMouseOver}
+                className = {`cities__places-list tabs__content`}
+              />
             </section>
             <div className="cities__right-section">
-              <Map offers={offers}/>
+              <Map
+                offers={offers}
+                className={`cities__map`}
+              />
             </div>
           </div>
         </div>
@@ -140,6 +142,8 @@ Main.propTypes = {
         coordinates: PropTypes.arrayOf(
             PropTypes.number
         ).isRequired,
+        reviews: PropTypes.array.isRequired,
+        nearOffers: PropTypes.array.isRequired,
       })
   ).isRequired,
   apartmentTitlesClickHandler: PropTypes.func,
