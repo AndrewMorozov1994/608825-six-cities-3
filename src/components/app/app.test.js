@@ -1,12 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
-
-const offersCount = 312;
+import {App} from "./app.jsx";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
 
 const offers = [
   {
     id: 0,
+    city: `Amsterdam`,
     title: `Beautiful & luxurious apartment at great location`,
     src: `img/apartment-01.jpg`,
     price: 120,
@@ -66,6 +67,7 @@ const offers = [
   },
   {
     id: 1,
+    city: `Paris`,
     title: `Wood and stone place`,
     src: `img/room.jpg`,
     price: 80,
@@ -125,6 +127,7 @@ const offers = [
   },
   {
     id: 2,
+    city: `Hamburg`,
     title: `Canal View Prinsengracht`,
     src: `img/apartment-02.jpg`,
     price: 132,
@@ -184,6 +187,7 @@ const offers = [
   },
   {
     id: 3,
+    city: `Amsterdam`,
     title: `Nice, cozy, warm big bed apartment`,
     src: `img/apartment-03.jpg`,
     price: 180,
@@ -231,6 +235,7 @@ const offers = [
   },
   {
     id: 4,
+    city: `Paris`,
     title: `Wood and stone place`,
     src: `img/room.jpg`,
     price: 80,
@@ -284,10 +289,21 @@ const offers = [
   },
 ];
 
+const mockStore = configureStore([]);
+
 it(`<App /> should be render correctly`, () => {
-  const app = renderer.create(<App
-    offersCount = {offersCount}
-    offers = {offers}
-  />).toJSON();
+
+  const store = mockStore({
+    offers,
+    city: `Amsterdam`
+  });
+
+  const app = renderer.create(
+      <Provider store={store}>
+        <App
+          offers={offers}
+          city={`Amsterdam`}
+        />
+      </Provider>).toJSON();
   expect(app).toMatchSnapshot();
 });

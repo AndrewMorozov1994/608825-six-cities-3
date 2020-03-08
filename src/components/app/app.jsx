@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import Property from "../property/property.jsx";
@@ -22,7 +23,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offersCount, offers, onCardMouseOver} = this.props;
+    const {offers} = this.props;
     const {activeId} = this.state;
 
     if (activeId >= 0) {
@@ -34,10 +35,8 @@ class App extends PureComponent {
 
     return (
       <Main
-        offersCount = {offersCount}
-        offers = {offers}
         apartmentTitlesClickHandler = {this._apartmentTitlesClickHandler}
-        onCardMouseOver = {onCardMouseOver}
+        onCardMouseOver = {() => {}}
       />
     );
   }
@@ -61,11 +60,16 @@ class App extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  city: state.city,
+});
+
 App.propTypes = {
-  offersCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
+        city: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         src: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
@@ -96,4 +100,5 @@ App.propTypes = {
   onCardMouseOver: PropTypes.func,
 };
 
-export default App;
+export {App};
+export default connect(mapStateToProps)(App);
