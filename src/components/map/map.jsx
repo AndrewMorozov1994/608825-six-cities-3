@@ -17,7 +17,6 @@ class Map extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {offers} = this.props;
     const _map = this._map.current;
 
     if (_map) {
@@ -36,12 +35,20 @@ class Map extends React.PureComponent {
         })
         .addTo(map);
 
-      offers.map((offer) => {
-        leaflet
-          .marker(offer.coordinates, {ICON})
-          .addTo(map);
-      });
+      this.setState({map, layerGroup: leaflet.layerGroup().addTo(map)});
     }
+  }
+
+  componentDidUpdate() {
+    const {layerGroup} = this.state;
+    const {offers} = this.props;
+
+    layerGroup.clearLayers();
+    offers.forEach((offer) => {
+      leaflet
+        .marker(offer.coordinates, {ICON})
+        .addTo(layerGroup);
+    });
   }
 
   render() {

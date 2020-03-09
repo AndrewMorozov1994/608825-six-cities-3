@@ -1,6 +1,7 @@
 export default [
   {
     id: 0,
+    city: `Amsterdam`,
     title: `Beautiful & luxurious apartment at great location`,
     src: `img/apartment-01.jpg`,
     price: 120,
@@ -60,6 +61,7 @@ export default [
   },
   {
     id: 1,
+    city: `Paris`,
     title: `Wood and stone place`,
     src: `img/room.jpg`,
     price: 80,
@@ -119,6 +121,7 @@ export default [
   },
   {
     id: 2,
+    city: `Hamburg`,
     title: `Canal View Prinsengracht`,
     src: `img/apartment-02.jpg`,
     price: 132,
@@ -178,6 +181,7 @@ export default [
   },
   {
     id: 3,
+    city: `Amsterdam`,
     title: `Nice, cozy, warm big bed apartment`,
     src: `img/apartment-03.jpg`,
     price: 180,
@@ -225,6 +229,7 @@ export default [
   },
   {
     id: 4,
+    city: `Paris`,
     title: `Wood and stone place`,
     src: `img/room.jpg`,
     price: 80,

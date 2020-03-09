@@ -1,9 +1,4 @@
-import React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import {Main} from "./main.jsx";
-import configureStore from "redux-mock-store";
-import {Provider} from "react-redux";
+import {ActionCreator, ActionType, reducer} from './reducer';
 
 const offers = [
   {
@@ -290,32 +285,43 @@ const offers = [
   },
 ];
 
-const mockStore = configureStore([]);
+describe(`setCity action`, () => {
+  it(`returns expected results`, () => {
+    const mockResult = {
+      type: `SET_CITY`,
+      payload: `Amsterdam`,
+    };
 
-const store = mockStore({
-  offers,
-  city: `Amsterdam`
-});
-
-Enzyme.configure({
-  adapter: new Adapter()
-});
-
-it(`apartmentTitles should be pressed`, () => {
-  const apartmentTitlesClickHandler = jest.fn();
-  const main = mount(
-      <Provider store={store}>
-        <Main
-          offers = {offers}
-          city={`Amsterdam`}
-          citiesList={[`Amsterdam`, `Paris`, `Hamburg`]}
-          onCityClick = {() => {}}
-          apartmentTitlesClickHandler={apartmentTitlesClickHandler}
-        />
-      </Provider>);
-  const apartmentTitles = main.find(`.place-card__name a`);
-  apartmentTitles.forEach((it) => {
-    it.props().onClick();
+    expect(ActionCreator.setCity(`Amsterdam`)).toEqual(mockResult);
   });
-  expect(apartmentTitlesClickHandler.mock.calls.length).toBe(offers.length);
+});
+
+describe(`setOffersList action`, () => {
+  it(`returns expected results`, () => {
+    const mockData = offers;
+    const mockResult = {
+      type: `SET_OFFERS`,
+      payload: mockData,
+    };
+
+    expect(ActionCreator.setOffers(mockData)).toEqual(mockResult);
+  });
+});
+
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    city: offers[0].city,
+    offers
+  });
+});
+
+it(`Reducer should change city`, () => {
+  expect(reducer({
+    city: `Amsterdam`
+  }, {
+    type: ActionType.SET_CITY,
+    payload: `Paris`,
+  })).toEqual({
+    city: `Paris`
+  });
 });
