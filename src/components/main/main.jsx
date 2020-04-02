@@ -5,11 +5,15 @@ import {ActionCreator} from "../../reducer";
 import PlaceList from "../place-list/place-list.jsx";
 import Map from "../map/map.jsx";
 import CitiesList from "../cities-list/cities-list.jsx";
+import PlacesSorting from "../places-sorting/places-sorting.jsx";
+import withActiveFilter from "../../hocs/with-active-filter.jsx";
+import {getCitiesListSelector, getCitySelector, getSortedOffersInCitySelector, getActiveFilter, getActiveOfferSelector} from "../../selectors.js";
+
+const PlacesSortingWrapped = withActiveFilter(PlacesSorting);
 
 const Main = (props) => {
-  const {offers, city, citiesList, onCityClick, apartmentTitlesClickHandler, onCardMouseOver} = props;
-  const selectedCityOffers = offers.filter((offer) => (offer.city === city));
-  const offersCount = selectedCityOffers.length;
+  const {offers, city, citiesList, onCityClick, apartmentTitlesClickHandler, onCardMouseOver, activeFilter, activeOffer, onFilterClick} = props;
+  const offersCount = offers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -49,27 +53,8 @@ const Main = (props) => {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{offersCount} places to stay in Amsterdam</b>
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by</span>
-                  <span className="places__sorting-type" tabIndex="0">
-                    Popular
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"></use>
-                    </svg>
-                  </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                    <li className="places__option" tabIndex="0">Price: low to high</li>
-                    <li className="places__option" tabIndex="0">Price: high to low</li>
-                    <li className="places__option" tabIndex="0">Top rated first</li>
-                  </ul>
-                  {/* <select className="places__sorting-type" id="places-sorting">
-                    <option className="places__option" value="popular" selected="">Popular</option>
-                    <option className="places__option" value="to-high">Price: low to high</option>
-                    <option className="places__option" value="to-low">Price: high to low</option>
-                    <option className="places__option" value="top-rated">Top rated first</option>
-                  </select> */}
-                </form>
+                <PlacesSortingWrapped onFilterClick={onFilterClick} activeFilter={activeFilter}/>
+
                 <PlaceList
                   offers = {offers}
                   apartmentTitlesClickHandler = {apartmentTitlesClickHandler}
@@ -81,6 +66,7 @@ const Main = (props) => {
                 <Map
                   offers={offers}
                   className={`cities__map`}
+                  activeMarker={(activeOffer) ? activeOffer.coordinates : null}
                 />
               </div>
             </div>
@@ -138,20 +124,31 @@ Main.propTypes = {
   city: PropTypes.string.isRequired,
   citiesList: PropTypes.array.isRequired,
   onCityClick: PropTypes.func.isRequired,
+  activeFilter: PropTypes.object,
+  activeOffer: PropTypes.array,
+  onFilterClick: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
-  offers: state.offers.filter((offer) => (offer.city === state.city)),
-  city: state.city,
-  citiesList: [...new Set(state.offers.map((offer) => offer.city))],
-});
+// const mapStateToProps = (state) => ({
+//   offers: state.offers.filter((offer) => (offer.city === state.city)),
+//   city: state.city,
+//   citiesList: [...new Set(state.offers.map((offer) => offer.city))],
+// });
+const mapStateToProps = (state) => {
+  return {
+    offers: getSortedOffersInCitySelector(state),
+    city: getCitySelector(state),
+    activeFilter: getActiveFilter(state),
+    citiesList: getCitiesListSelector(state),
+    activeOffer: getActiveOfferSelector(state)
+  };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  onCityClick: (evt, city) => {
-    evt.preventDefault();
-    dispatch(ActionCreator.setCity(city));
-  }
-});
+const mapDispatchToProps = {
+  onCityClick: ActionCreator.setCity,
+  onFilterClick: ActionCreator.setFilter,
+  onCardMouseOver: ActionCreator.setActiveOffer
+};
 
 export {Main};
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

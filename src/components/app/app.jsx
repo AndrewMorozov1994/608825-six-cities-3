@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import Property from "../property/property.jsx";
+import {getCitySelector} from "../../selectors.js";
+import {getSortedOffersInCitySelector} from "../../selectors";
 
 class App extends PureComponent {
   constructor(props) {
@@ -36,7 +38,6 @@ class App extends PureComponent {
     return (
       <Main
         apartmentTitlesClickHandler = {this._apartmentTitlesClickHandler}
-        onCardMouseOver = {() => {}}
       />
     );
   }
@@ -61,8 +62,8 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
-  city: state.city,
+  offers: getSortedOffersInCitySelector(state),
+  city: getCitySelector(state),
 });
 
 App.propTypes = {
