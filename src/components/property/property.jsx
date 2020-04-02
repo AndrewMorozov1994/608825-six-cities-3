@@ -7,7 +7,7 @@ import ReviewsList from "../reviews-list/reviews-list.jsx";
 const Property = (props) => {
 
   const {card} = props;
-  const {features, owner, photos, reviews} = card;
+  const {features, owner, photos, reviews, rating} = card;
 
   return (
     <div className="page">
@@ -66,10 +66,10 @@ const Property = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `80%`}}></span>
+                  <span style={{width: `${rating * 20}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">

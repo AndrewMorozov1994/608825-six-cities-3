@@ -15,6 +15,7 @@ const offers = [
     bedrooms: 2,
     guests: 2,
     features: [`Wifi`, `Heating`, `Cable TV`, `Kitchen`],
+    rating: 1,
     owner: {
       name: `Name1`,
       super: true,
@@ -27,18 +28,21 @@ const offers = [
         text: `Text1 offer1`,
         user: `Name1`,
         date: `2020-01-01`,
+        rating: 1,
       },
       {
         id: 1,
         text: `Text2 offer1`,
         user: `Name2`,
         date: `2020-01-02`,
+        rating: 1,
       },
       {
         id: 2,
         text: `Text3 offer1`,
         user: `Name3`,
         date: `2020-01-03`,
+        rating: 1,
       }
     ],
     nearOffers: [
@@ -50,6 +54,7 @@ const offers = [
         type: `Hotel`,
         isPremium: false,
         coordinates: [52.369553943508, 4.85309666406198],
+        rating: 1,
       },
       {
         id: 2,
@@ -59,6 +64,7 @@ const offers = [
         type: `Apartment`,
         isPremium: true,
         coordinates: [52.3909553943508, 4.929309666406198],
+        rating: 1,
       },
     ],
   },

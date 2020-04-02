@@ -161,7 +161,7 @@ exports[`<Property /> should be render correctly 1`] = `
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "20%",
                   }
                 }
               />
@@ -174,7 +174,7 @@ exports[`<Property /> should be render correctly 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              4.8
+              1
             </span>
           </div>
           <ul
@@ -336,7 +336,7 @@ exports[`<Property /> should be render correctly 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "20%",
                           }
                         }
                       />
@@ -395,7 +395,7 @@ exports[`<Property /> should be render correctly 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "20%",
                           }
                         }
                       />
@@ -454,7 +454,7 @@ exports[`<Property /> should be render correctly 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "20%",
                           }
                         }
                       />
@@ -663,6 +663,8 @@ exports[`<Property /> should be render correctly 1`] = `
         >
           <article
             className="cities__place-card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             
             <div
@@ -730,7 +732,7 @@ exports[`<Property /> should be render correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "20%",
                       }
                     }
                   />
@@ -760,6 +762,8 @@ exports[`<Property /> should be render correctly 1`] = `
           </article>
           <article
             className="cities__place-card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               className="place-card__mark"
@@ -833,7 +837,7 @@ exports[`<Property /> should be render correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "20%",
                       }
                     }
                   />

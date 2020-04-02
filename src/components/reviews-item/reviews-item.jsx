@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const ReviewsItem = (props) => {
 
-  const {text, user, date} = props.review;
+  const {text, user, date, rating} = props.review;
 
   return (
     <li className="reviews__item">
@@ -19,7 +19,7 @@ const ReviewsItem = (props) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `80%`}}></span>
+            <span style={{width: `${rating * 20}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -37,7 +37,8 @@ ReviewsItem.propTypes = {
     id: PropTypes.number,
     text: PropTypes.string,
     user: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.string,
+    rating: PropTypes.number.isRequired,
   })
 };
 

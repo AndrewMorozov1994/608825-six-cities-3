@@ -9,6 +9,10 @@ const ICON = leaflet.icon({
   iconUrl: `img/pin.svg`,
   iconSize: ICON_SIZE,
 });
+const ICON_ACTIVE = leaflet.icon({
+  iconUrl: `/img/pin-active.svg`,
+  iconSize: ICON_SIZE,
+});
 
 class Map extends React.PureComponent {
   constructor(props) {
@@ -41,12 +45,12 @@ class Map extends React.PureComponent {
 
   componentDidUpdate() {
     const {layerGroup} = this.state;
-    const {offers} = this.props;
+    const {offers, activeMarker} = this.props;
 
     layerGroup.clearLayers();
     offers.forEach((offer) => {
       leaflet
-        .marker(offer.coordinates, {ICON})
+        .marker(offer.coordinates, {icon: offer.coordinates === activeMarker ? ICON_ACTIVE : ICON})
         .addTo(layerGroup);
     });
   }
@@ -61,6 +65,10 @@ class Map extends React.PureComponent {
 Map.propTypes = {
   offers: PropTypes.array.isRequired,
   className: PropTypes.string,
+  activeMarker: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.oneOf([null])
+  ]),
 };
 
 export default Map;
